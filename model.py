@@ -112,10 +112,10 @@ class DCGAN(object):
           self.discriminator(self.G, self.y, reuse=True)
     else:
       self.G = self.generator(self.z)
-      self.D, self.D_logits = self.discriminator(inputs)
+      self.D, self.D_list, self.D_logits = self.discriminator(inputs)
 
       self.sampler = self.sampler(self.z)
-      self.D_, self.D_logits_ = self.discriminator(self.G, reuse=True)
+      self.D_, _, self.D_logits_ = self.discriminator(self.G, reuse=True)
 
     self.d_sum = histogram_summary("d", self.D)
     self.d__sum = histogram_summary("d_", self.D_)
@@ -331,7 +331,14 @@ class DCGAN(object):
         h3 = lrelu(self.d_bn3(conv2d(h2, self.df_dim*8, name='d_h3_conv')))
         h4 = linear(tf.reshape(h3, [self.batch_size, -1]), 1, 'd_h3_lin')
 
-        return tf.nn.sigmoid(h4), h4
+        # to get features
+        disc0 = tf.nn.sigmoid(h0)
+        disc1 = tf.nn.sigmoid(h1)
+        disc2 = tf.nn.sigmoid(h2)
+        disc3 = tf.nn.sigmoid(h3)
+        disc4 = tf.nn.sigmoid(h4)
+
+        return disc4, [disc0, disc1, disc2, disc3, disc4], h4
       else:
         yb = tf.reshape(y, [self.batch_size, 1, 1, self.y_dim])
         x = conv_cond_concat(image, yb)
@@ -460,6 +467,28 @@ class DCGAN(object):
         h2 = conv_cond_concat(h2, yb)
 
         return tf.nn.sigmoid(deconv2d(h2, [self.batch_size, s_h, s_w, self.c_dim], name='g_h3'))
+
+  def get_feature(self, config, batch_files):
+
+    # self.data = glob(os.path.join("./data", config.dataset, self.input_fname_pattern))
+    # self.data.sort()
+    # # batch_idxs = min(len(self.data), config.train_size) // config.batch_size
+    # # for idx in xrange(0, batch_idxs):
+    # #   batch_files = self.data[idx * config.batch_size:(idx + 1) * config.batch_size]
+    # batch_files = self.data[:config.batch_size]
+
+    batch = [
+      get_image(batch_file,
+                input_height=self.input_height,
+                input_width=self.input_width,
+                resize_height=self.output_height,
+                resize_width=self.output_width,
+                crop=self.crop,
+                grayscale=self.grayscale) for batch_file in batch_files]
+    batch_images = np.array(batch).astype(np.float32)
+    batch_z = np.random.uniform(-1, 1, [config.batch_size, self.z_dim]).astype(np.float32)
+
+    return self.sess.run(self.D_list, feed_dict={self.inputs:batch_images})
 
   def load_mnist(self):
     data_dir = os.path.join("./data", self.dataset_name)

@@ -4,6 +4,8 @@ samples
 *.zip
 logs
 test*
+result
+DCGAN feature clustering result
 
 web/js/gen_layers.js
 
