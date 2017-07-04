@@ -327,7 +327,6 @@ class DCGAN(object):
         h2 = lrelu(self.d_bn2(conv2d(h1, self.df_dim*4, name='d_h2_conv')))
         h3 = lrelu(self.d_bn3(conv2d(h2, self.df_dim*8, name='d_h3_conv')))
         h4 = linear(tf.reshape(h3, [self.batch_size, -1]), 1, 'd_h4_lin')
-<<<<<<< HEAD
 
         # to get features
         disc0 = tf.nn.sigmoid(h0)
@@ -335,8 +334,6 @@ class DCGAN(object):
         disc2 = tf.nn.sigmoid(h2)
         disc3 = tf.nn.sigmoid(h3)
         disc4 = tf.nn.sigmoid(h4)
-=======
->>>>>>> a8bab57b1cfc26ae04beefd8a539b5c537f0ff24
 
         return disc4, [disc0, disc1, disc2, disc3, disc4], h4
       else:
