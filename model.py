@@ -474,6 +474,41 @@ class DCGAN(object):
     # #   batch_files = self.data[idx * config.batch_size:(idx + 1) * config.batch_size]
     # batch_files = self.data[:config.batch_size]
 
+    g_batch_size = 128
+
+    def maxpooling(sess, disc):
+      kernel_stride_size = 4
+      pooling = [
+        tf.nn.max_pool(disc[i], ksize=[1, 2 ** (4 - i), 2 ** (4 - i), 1],
+                       strides=[1, 2 ** (4 - i), 2 ** (4 - i), 1], padding='SAME')
+        for i in range(4)
+      ]
+      # pooling = [
+      #     tf.nn.avg_pool(disc[i], ksize=[1, 14, 14, 1], strides=[1, 14, 14, 1], padding='SAME')
+      #     for i in range(4)
+      # ]
+
+      maxpool_result = sess.run(pooling)
+
+      return maxpool_result
+
+    def flatten(sess,disc):
+      flatten = [
+        tf.reshape(disc[i], [g_batch_size, -1])
+        for i in range(4)
+      ]
+      flatten_result = sess.run(flatten)
+
+      return flatten_result
+
+    def concat(sess,disc):
+      concat = tf.concat(disc, 1)
+
+      concat_result = sess.run(concat)
+
+      return concat_result
+
+
     batch = [
       get_image(batch_file,
                 input_height=self.input_height,
@@ -485,7 +520,12 @@ class DCGAN(object):
     batch_images = np.array(batch).astype(np.float32)
     batch_z = np.random.uniform(-1, 1, [config.batch_size, self.z_dim]).astype(np.float32)
 
-    return self.sess.run(self.D_list, feed_dict={self.inputs:batch_images})
+    ret = self.sess.run(self.D_list, feed_dict={self.inputs:batch_images})
+    # ret = maxpooling(self.sess, ret)
+    # ret = flatten(self.sess, ret)
+    # ret = concat(self.sess, ret)
+
+    return ret
 
   def load_mnist(self):
     data_dir = os.path.join("./data", self.dataset_name)
