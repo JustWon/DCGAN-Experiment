@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bb5eccc-9d64-4cd6-aa50-b8fbc2f9125e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/DCGAN-tensorflow.iml" afterPath="$PROJECT_DIR$/.idea/DCGAN-tensorflow.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/20170704 Experiment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/20170704 Experiment-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/20170702 Experiment.ipynb" afterPath="$PROJECT_DIR$/20170702 Experiment.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/20170706 Experiment-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/20170706 Experiment-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/20170704 Experiment.ipynb" afterPath="$PROJECT_DIR$/20170704 Experiment.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.py" afterPath="$PROJECT_DIR$/model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/20170706 Experiment.ipynb" afterPath="$PROJECT_DIR$/20170706 Experiment.ipynb" />
     </list>
     <ignored path="DCGAN-tensorflow.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +33,8 @@
       <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="507" column="0" lean-forward="true" selection-start-line="507" selection-start-column="0" selection-end-line="507" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="508" column="26" lean-forward="false" selection-start-line="508" selection-start-column="26" selection-end-line="508" selection-end-column="26" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -132,9 +128,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -170,7 +166,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/My Database/Development From Linux/my_codes/Manual_GT_Checker" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="get&#9;null&#9;null" />
@@ -457,7 +453,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12345014" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -728,8 +724,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="507" column="0" lean-forward="true" selection-start-line="507" selection-start-column="0" selection-end-line="507" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="508" column="26" lean-forward="false" selection-start-line="508" selection-start-column="26" selection-end-line="508" selection-end-column="26" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
